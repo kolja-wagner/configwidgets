@@ -20,13 +20,14 @@ class ExampleWindow(QWidget):
     def __init__(self):
         super().__init__()
         loadUi(__file__+"/../example.ui", self)
-        
         self.config = QSettings("k.wagner", "configsettings-example")
         self.setup_widget()
+        
     def setup_widget(self):
         self.checkBox.setup(self.config, "checkBox")
         self.spinBox.setup(self.config, "spinBox")
         self.doubleSpinBox.setup(self.config, "doubleSpinBox")
+        self.lineEdit.setup(self.config, "lineEdit")
     
     def setup_actions(self):
         self.btn_show.clicked.connect(self.show_settings)

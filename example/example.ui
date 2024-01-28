@@ -38,7 +38,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="ConfigLineEdit" name="lineEdit"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
@@ -123,6 +123,11 @@
   <customwidget>
    <class>ConfigDoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigLineEdit</class>
+   <extends>QLineEdit</extends>
    <header>configwidgets.h</header>
   </customwidget>
  </customwidgets>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>263</width>
-    <height>250</height>
+    <width>317</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,6 +60,36 @@
      <item row="3" column="1">
       <widget class="ConfigDoubleSpinBox" name="doubleSpinBox"/>
      </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="configDateEditLabel">
+       <property name="text">
+        <string>ConfigDateEdit</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="ConfigDateEdit" name="dateEdit"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="configTimeEditLabel">
+       <property name="text">
+        <string>ConfigTimeEdit</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="ConfigTimeEdit" name="timeEdit"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="configDateTimeEditLabel">
+       <property name="text">
+        <string>ConfigDateTimeEdit</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="ConfigDateTimeEdit" name="dateTimeEdit"/>
+     </item>
     </layout>
    </item>
    <item>
@@ -70,7 +100,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>72</height>
+       <height>176</height>
       </size>
      </property>
     </spacer>
@@ -128,6 +158,21 @@
   <customwidget>
    <class>ConfigLineEdit</class>
    <extends>QLineEdit</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigDateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigTimeEdit</class>
+   <extends>QTimeEdit</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigDateTimeEdit</class>
+   <extends>QDateTimeEdit</extends>
    <header>configwidgets.h</header>
   </customwidget>
  </customwidgets>

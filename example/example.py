@@ -28,6 +28,10 @@ class ExampleWindow(QWidget):
         self.spinBox.setup(self.config, "spinBox")
         self.doubleSpinBox.setup(self.config, "doubleSpinBox")
         self.lineEdit.setup(self.config, "lineEdit")
+        
+        self.dateEdit.setup(self.config, "dateEdit")
+        self.timeEdit.setup(self.config, "timeEdit")
+        self.dateTimeEdit.setup(self.config, "dateTimeEdit")
     
     def setup_actions(self):
         self.btn_show.clicked.connect(self.show_settings)

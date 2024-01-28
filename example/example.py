@@ -15,6 +15,7 @@ from PyQt5.uic import loadUi
 from configwidgets import ConfigCheckBox
 
 class ExampleWindow(QWidget):
+    EXIT_CODE_REBOOT = -42
     
     def __init__(self):
         super().__init__()
@@ -24,10 +25,13 @@ class ExampleWindow(QWidget):
         self.setup_widget()
     def setup_widget(self):
         self.checkBox.setup(self.config, "checkBox")
+        self.spinBox.setup(self.config, "spinBox")
+        self.doubleSpinBox.setup(self.config, "doubleSpinBox")
     
     def setup_actions(self):
         self.btn_show.clicked.connect(self.show_settings)
         self.btn_reset.clicked.connect(self.reset_settings)
+        self.btn_restart.clicked.connect(self.restart)
         
     def show_settings(self):
         print(f"show all in {self.config.fileName()}")
@@ -38,15 +42,22 @@ class ExampleWindow(QWidget):
     def reset_settings(self):
         print(f"reset {self.config.fileName()}")
         self.config.clear()
+        
+    def restart(self):
+        QApplication.instance().exit(self.EXIT_CODE_REBOOT)
 
 
 def start_example():
-    app = QApplication(sys.argv)
-    window = ExampleWindow()
-    window.setup_actions()
-    window.show()
-    
-    sys.exit(app.exec())
+    current_exit_code = ExampleWindow.EXIT_CODE_REBOOT
+    while current_exit_code == ExampleWindow.EXIT_CODE_REBOOT:
+        app = QApplication(sys.argv)
+        window = ExampleWindow()
+        window.setup_actions()
+        window.show()
+        current_exit_code = app.exec()
+        app = None
+
+
 
 if __name__ == "__main__":
     start_example()    

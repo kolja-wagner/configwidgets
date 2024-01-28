@@ -48,7 +48,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QSpinBox" name="spinBox"/>
+      <widget class="ConfigSpinBox" name="spinBox"/>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
@@ -58,7 +58,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+      <widget class="ConfigDoubleSpinBox" name="doubleSpinBox"/>
      </item>
     </layout>
    </item>
@@ -98,6 +98,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="btn_restart">
+       <property name="text">
+        <string>restart</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -106,6 +113,16 @@
   <customwidget>
    <class>ConfigCheckBox</class>
    <extends>QCheckBox</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
    <header>configwidgets.h</header>
   </customwidget>
  </customwidgets>

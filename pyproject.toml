@@ -10,6 +10,11 @@ authors = [
 description = "Subclassing PyQt5.QtWidgets to syncronize state in QSettings object."
 readme = "Readme.md"
 dynamic = ["version"]
+requires-python = ">=3.7"
+dependencies = [
+    "PyQt5>=5.15"
+]
+
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,20 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jan 28 14:53:58 2024
-
-@author: kolja
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jan 28 14:52:15 2024
-
-@author: kolja
-"""
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QCheckBox
 
 class ConfigCheckBox(QCheckBox):
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = None

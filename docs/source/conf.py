@@ -20,12 +20,25 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
+    'sphinx.ext.intersphinx',
+    
+    'sphinx_qt_documentation',
     
     'sphinx_copybutton',
     'myst_nb'
     ]
 templates_path = ['_templates']
 exclude_patterns = []
+
+
+# -- options for intersphinx
+qt_documentation = "PySide6"
+
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None)  ,
+    }
+intersphinx_disabled_reftypes = ["*"]
+
 
 # -- options for copybutton
 copybutton_prompt_text = r"/>>>|\.\.\.|\([a-zA-Z]+\)\ \$\ |\$\ /gm"

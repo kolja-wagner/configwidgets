@@ -9,12 +9,28 @@ from PyQt5.QtWidgets import QLineEdit, QComboBox
 
 
 class ConfigLineEdit(QLineEdit):
-    def __init__(self, parent=None):
-        super().__init__()
+    """
+    A subclass of :py:class:`QLineEdit`. Can be setup with a link to `QSettings` instance
+    to maintain state between program restarts.
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.name = None
         self.default = None
 
     def setup(self, config: QSettings, name: str, default: str = ""):
+        """
+        Setup the link to a :py:class:`QSettings` instance for this lineedit.
+
+        Parameters
+        ----------
+        config : QSettings
+            The QSettings instance, that shall be connected.
+        name : str
+            The QSettings key to store the synced value.
+        default : bool, optional
+            The default value. The default is False.
+        """
         self.config = config
         self.set_name(name)
         self.set_default(default)
@@ -48,16 +64,42 @@ class ConfigLineEdit(QLineEdit):
 
 
 class ConfigComboBox(QComboBox):
+    """
+    A subclass of :py:class:`QComboBox`. Can be setup with a link to `QSettings` instance
+    to maintain state between program restarts.
+    """
     def __init__(self, parent=None):
-        super().__init__()
+        """
+        Initialize a ConfigRadioButton. Other than declaring default values as `None` the super constructor is called.
+
+        Parameters
+        ----------
+        parent : QWidget, optional
+            The parent widget of the radiobutton. The default is None.
+        """
+        super().__init__(parent=parent)
         self.name = None
         self.default = None
 
-    def setup(self, config: QSettings, name: str, options: list[str], 
+    def setup(self, config: QSettings, name: str, items: list[str], 
               default: str = None, enable_custom: bool=False):
+        """
+        Setup the link to a :py:class:`QSettings` instance for this combobox.
+
+        Parameters
+        ----------
+        config : QSettings
+            The QSettings instance, that shall be connected.
+        name : str
+            The QSettings key to store the synced value.
+        items: list[str]
+            The list of items to be displayed.
+        default : bool, optional
+            The default value. The default is False.
+        """
         self.config = config
         self.set_name(name)
-        self.set_options(options)
+        self.set_items(items)
         self.set_default(default)
         self.load_value() 
         self.textActivated.connect(self.collect)
@@ -67,21 +109,21 @@ class ConfigComboBox(QComboBox):
     def set_name(self, name):
         self.name = name
         
-    def set_options(self, options: list[str]):
-        self.options = options
+    def set_items(self, items: list[str]):
+        """ set the items of the combobox."""
+        self.items = items
         
-        for key in self.options:
+        for key in self.items:
             self.addItem(str(key))
         # TODO: add to QSettings
 
     def set_default(self, default: str):
         if default is None:
-            default = self.options[0]
+            default = self.items[0]
         self.default = default
 
     def collect(self) -> str:
         """ save text in config."""
-        print("collect")
         val = self.currentText()
         self.config.setValue(self.name, val)
         # TODO: save new values to QSettings
@@ -99,7 +141,6 @@ class ConfigComboBox(QComboBox):
         self.collect()
         return val
 
-        
         
 if __name__ == "__main__":
     import sys

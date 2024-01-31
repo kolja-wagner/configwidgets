@@ -9,7 +9,9 @@
 project = 'configwidgets'
 copyright = '2024, Kolja Wagner'
 author = 'Kolja Wagner'
-release = '0.0.3'
+
+import configwidgets
+release = configwidgets.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

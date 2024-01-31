@@ -21,9 +21,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    
+
     'sphinx_qt_documentation',
-    
     'sphinx_copybutton',
     'myst_nb'
     ]
@@ -35,7 +34,7 @@ exclude_patterns = []
 qt_documentation = "PySide6"
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3', None)  ,
+    'python': ('https://docs.python.org/3', None),
     }
 intersphinx_disabled_reftypes = ["*"]
 
@@ -53,6 +52,4 @@ nb_number_source_lines = True
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
-html_theme_options = {
-    "navigation_with_keys":True    
-    }
+html_theme_options = {"navigation_with_keys": True}

@@ -25,3 +25,7 @@ where = ["src"]
 
 [tool.setuptools.dynamic]
 version = {attr = "configwidgets.__version__"}
+
+[tool.flake8]
+ignore = ["F401", "E123"]
+max-line-length = 90

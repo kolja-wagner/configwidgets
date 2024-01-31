@@ -30,7 +30,9 @@ class ExampleWindow(QWidget):
 
         self.spinBox.setup(self.config, "spinBox")
         self.doubleSpinBox.setup(self.config, "doubleSpinBox")
+        
         self.lineEdit.setup(self.config, "lineEdit")
+        self.comboBox.setup(self.config, "comboBox", ["abc","def", "ghi"], default="def")
 
         self.dateEdit.setup(self.config, "dateEdit")
         self.timeEdit.setup(self.config, "timeEdit")

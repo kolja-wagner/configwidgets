@@ -4,4 +4,4 @@ sphinx-qt-documentation==0.4.1
 pydata-sphinx-theme==0.14.2
 myst-nb==0.17.2
 PyQt5
-configwidgets
+-e .

@@ -26,7 +26,6 @@ extensions = [
 
     'sphinx_qt_documentation',
     'sphinx_copybutton',
-    'myst_nb'
     ]
 templates_path = ['_templates']
 exclude_patterns = []

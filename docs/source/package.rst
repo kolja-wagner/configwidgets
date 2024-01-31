@@ -35,6 +35,7 @@ The following :class:`ConfigCheckBox` provides an example, the other classes are
    :members:
    :special-members: __init__
    :member-order: bysource
+   :noindex:
    
 content
 -------
@@ -46,4 +47,5 @@ content
    package_text
    package_numbers
    package_datetime
+   package_containers
 

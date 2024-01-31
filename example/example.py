@@ -25,6 +25,9 @@ class ExampleWindow(QWidget):
 
     def setup_widget(self):
         self.checkBox.setup(self.config, "checkBox")
+        self.radioButton_1.setup(self.config, "radioButton1")
+        self.radioButton_2.setup(self.config, "radioButton2")
+
         self.spinBox.setup(self.config, "spinBox")
         self.doubleSpinBox.setup(self.config, "doubleSpinBox")
         self.lineEdit.setup(self.config, "lineEdit")

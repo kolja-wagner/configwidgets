@@ -30,67 +30,102 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>ConfigLineEdit</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="3" column="1">
       <widget class="ConfigLineEdit" name="lineEdit"/>
      </item>
-     <item row="2" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>ConfigSpinBox</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="4" column="1">
       <widget class="ConfigSpinBox" name="spinBox"/>
      </item>
-     <item row="3" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>ConfigDoubleSpinBox</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="5" column="1">
       <widget class="ConfigDoubleSpinBox" name="doubleSpinBox"/>
      </item>
-     <item row="4" column="0">
+     <item row="6" column="0">
       <widget class="QLabel" name="configDateEditLabel">
        <property name="text">
         <string>ConfigDateEdit</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="6" column="1">
       <widget class="ConfigDateEdit" name="dateEdit"/>
      </item>
-     <item row="5" column="0">
+     <item row="7" column="0">
       <widget class="QLabel" name="configTimeEditLabel">
        <property name="text">
         <string>ConfigTimeEdit</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="7" column="1">
       <widget class="ConfigTimeEdit" name="timeEdit"/>
      </item>
-     <item row="6" column="0">
+     <item row="8" column="0">
       <widget class="QLabel" name="configDateTimeEditLabel">
        <property name="text">
         <string>ConfigDateTimeEdit</string>
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
+     <item row="8" column="1">
       <widget class="ConfigDateTimeEdit" name="dateTimeEdit"/>
      </item>
+     <item row="1" column="1">
+      <widget class="ConfigRadioButton" name="radioButton_2">
+       <property name="text">
+        <string>RadioButton</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>ConfigRadioButton1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>ConfigRadioButton2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="ConfigRadioButton" name="radioButton_1">
+       <property name="text">
+        <string>RadioButton</string>
+       </property>
+      </widget>
+     </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="radioButton_3">
+     <property name="text">
+      <string>RadioButton</string>
+     </property>
+    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer">
@@ -100,7 +135,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>176</height>
+       <height>107</height>
       </size>
      </property>
     </spacer>
@@ -173,6 +208,11 @@
   <customwidget>
    <class>ConfigDateTimeEdit</class>
    <extends>QDateTimeEdit</extends>
+   <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigRadioButton</class>
+   <extends>QRadioButton</extends>
    <header>configwidgets.h</header>
   </customwidget>
  </customwidgets>

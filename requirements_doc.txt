@@ -1,5 +1,0 @@
-sphinx==5.3.0
-shinx-copybutton==0.5.2
-sphinx-qt-documentation==0.4.1
-pydata-sphinx-theme==0.14.2
-myst-nb==0.17.2

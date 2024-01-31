@@ -15,6 +15,10 @@ dependencies = [
     "PyQt5>=5.15"
 ]
 
+[project.urls]
+Documentation = "https://configwidgets.readthedocs.io/en/latest/"
+Repository = "https://github.com/kolja-wagner/configwidgets"
+
 
 [tool.setuptools.packages.find]
 where = ["src"]

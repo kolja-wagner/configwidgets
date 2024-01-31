@@ -4,8 +4,8 @@ Created on Sun Jan 28 15:24:09 2024
 
 @author: kolja
 """
-from PyQt5.QtWidgets import QSpinBox, QDoubleSpinBox
-from PyQt5.QtCore import Qt, QSettings
+from PyQt5.QtCore import QSettings, Qt
+from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox
 
 
 class ConfigSpinBox(QSpinBox):

@@ -4,10 +4,10 @@ Created on Sun Jan 28 16:59:21 2024
 
 @author: kolja
 """
-from PyQt5.QtWidgets import QLineEdit
 from PyQt5.QtCore import QSettings
+from PyQt5.QtWidgets import QLineEdit
 
-        
+
 class ConfigLineEdit(QLineEdit):
     def __init__(self, parent=None):
         super().__init__()

@@ -7,12 +7,13 @@ Created on Sun Jan 28 14:56:14 2024
 
 import sys
 from pprint import pprint
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
+
 from PyQt5.QtCore import QSettings
+from PyQt5.QtWidgets import QApplication, QHBoxLayout, QWidget
 from PyQt5.uic import loadUi
 
-
 from configwidgets import ConfigCheckBox
+
 
 class ExampleWindow(QWidget):
     EXIT_CODE_REBOOT = -42

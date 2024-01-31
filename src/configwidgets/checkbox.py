@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QCheckBox, QWidget
 
+
 class ConfigCheckBox(QCheckBox):
     """ 
     A subclass of :py:class:`QCheckBox`. Can be setup with a link to `QSettings` instance

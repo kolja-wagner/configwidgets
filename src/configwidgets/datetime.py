@@ -5,14 +5,14 @@ Created on Sun Jan 28 17:07:43 2024
 @author: kolja
 """
 
-from datetime import datetime
 from datetime import date as pydate
+from datetime import datetime
 from datetime import time as pytime
 
 from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QDateEdit, QTimeEdit, QDateTimeEdit
-      
-        
+from PyQt5.QtWidgets import QDateEdit, QDateTimeEdit, QTimeEdit
+
+
 class ConfigDateTimeEdit(QDateTimeEdit):
     
     def __init__(self, parent=None):

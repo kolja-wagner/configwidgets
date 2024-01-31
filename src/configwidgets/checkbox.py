@@ -7,7 +7,7 @@ class ConfigCheckBox(QCheckBox):
     to maintain state between program restarts.    
     """
 
-    def __init__(self, text: str, parent: QWidget = None):
+    def __init__(self, *args, **kwargs):
         """
         Initialize a ConfigCheckBox. 
         Other than declaring default values as `None` the super constructor is called.
@@ -19,7 +19,7 @@ class ConfigCheckBox(QCheckBox):
         parent : QWidget, optional
             The parent widget of the checkbox. The default is None.
         """
-        super().__init__(text=text, parent=parent)
+        super().__init__(*args, **kwargs)
         self.config = None
         self.name = None
         self.default = False

@@ -3,6 +3,7 @@ package
 
 the contents of the :mod:`configwidgets` package.
 
+
 concept
 -------
 
@@ -25,8 +26,8 @@ All widgets are build with the same concept:
 
 The "only" change is the type of the value and the state-change signal.
 
-example
--------
+show case
+---------
 
 The following :class:`ConfigCheckBox` provides an example, the other classes are defined alike:
 
@@ -37,4 +38,12 @@ The following :class:`ConfigCheckBox` provides an example, the other classes are
    
 content
 -------
+
+.. toctree::
+   :maxdepth: 2
+
+   package_buttons
+   package_text
+   package_numbers
+   package_datetime
 

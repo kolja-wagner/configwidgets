@@ -5,7 +5,7 @@ Definition of text based Widgets.
 @author: kolja
 """
 from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QLineEdit, QComboBox
+from PyQt5.QtWidgets import QLineEdit, QComboBox, QPlainTextEdit
 
 
 class ConfigLineEdit(QLineEdit):
@@ -112,7 +112,7 @@ class ConfigComboBox(QComboBox):
     def set_items(self, items: list[str]):
         """ set the items of the combobox."""
         self.items = items
-        
+        self.clear()
         for key in self.items:
             self.addItem(str(key))
         # TODO: add to QSettings
@@ -141,6 +141,63 @@ class ConfigComboBox(QComboBox):
         self.collect()
         return val
 
+class ConfigPlainTextEdit(QPlainTextEdit):
+    """
+    A subclass of :py:class:`QPlainTextEdit`. Can be setup with a link to `QSettings` instance
+    to maintain state between program restarts.
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.name = None
+        self.default = None
+
+    def setup(self, config: QSettings, name: str, default: str = "", autocollect: bool=False):
+        """
+        Setup the link to a :py:class:`QSettings` instance for this plaintextedit.
+
+        Parameters
+        ----------
+        config : QSettings
+            The QSettings instance, that shall be connected.
+        name : str
+            The QSettings key to store the synced value.
+        default : bool, optional
+            The default value. The default is False.
+        autocollect: bool, optional
+            When False the state is not automatically saved. The default is False.
+        """
+        self.config = config
+        self.set_name(name)
+        self.set_default(default)
+
+        self.load_value()
+        if autocollect:
+            self.textChanged.connect(self.collect)
+
+    def collect(self) -> str:
+        """ save text in config."""
+        val = self.toPlainText()
+        self.config.setValue(self.name, val)
+        return val
+
+    def load_value(self) -> str:
+        """ load text from config."""
+        val = self.config.value(self.name, type=str, defaultValue=self.default)
+        self.setPlainText(val)
+        return val
+
+    def set_value(self, val: str) -> str:
+        """ to widget and config."""
+        self.setPlainText(val)
+        self.collect()
+        return val
+
+    def set_name(self, name: str):
+        self.name = name
+
+    def set_default(self, default: str):
+        self.default = default
+
         
 if __name__ == "__main__":
     import sys
@@ -151,8 +208,8 @@ if __name__ == "__main__":
     config = QSettings("k.wagner", "configsettings-example")
 
     app = QApplication(sys.argv)
-    window = ConfigComboBox() 
-    window.setup(config, "comboBox", keys, default=keys[1])
+    window = ConfigPlainTextEdit() 
+    window.setup(config, "plaintext", autosave=True)
 
     window.show()
     sys.exit(app.exec())

@@ -11,3 +11,8 @@ text widgets
    :members:
    :special-members: __init__
    :member-order: bysource
+
+.. autoclass:: configwidgets.ConfigPlainTextEdit
+   :members:
+   :special-members: __init__
+   :member-order: bysource

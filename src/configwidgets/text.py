@@ -18,7 +18,8 @@ class ConfigLineEdit(QLineEdit):
         self.name = None
         self.default = None
 
-    def setup(self, config: QSettings, name: str, default: str = "", autocollect: bool=True):
+    def setup(self, config: QSettings, name: str, default: str = "",
+              autocollect: bool = True):
         """
         Setup the link to a :py:class:`QSettings` instance for this lineedit.
 
@@ -68,12 +69,13 @@ class ConfigLineEdit(QLineEdit):
 
 class ConfigComboBox(QComboBox):
     """
-    A subclass of :py:class:`QComboBox`. Can be setup with a link to `QSettings` instance
-    to maintain state between program restarts.
+    A subclass of :py:class:`QComboBox`. Can be setup with a link to
+    :py:class:`QSettings` instance to maintain state between program restarts.
     """
     def __init__(self, parent=None):
         """
-        Initialize a ConfigRadioButton. Other than declaring default values as `None` the super constructor is called.
+        Initialize a ConfigRadioButton. Other than declaring default values as
+        `None` the super constructor is called.
 
         Parameters
         ----------
@@ -84,8 +86,8 @@ class ConfigComboBox(QComboBox):
         self.name = None
         self.default = None
 
-    def setup(self, config: QSettings, name: str, items: list[str], 
-              default: str = None, enable_custom: bool=False):
+    def setup(self, config: QSettings, name: str, items: list[str],
+              default: str = None, enable_custom: bool = False):
         """
         Setup the link to a :py:class:`QSettings` instance for this combobox.
 
@@ -104,14 +106,14 @@ class ConfigComboBox(QComboBox):
         self.set_name(name)
         self.set_items(items)
         self.set_default(default)
-        self.load_value() 
+        self.load_value()
         self.textActivated.connect(self.collect)
         # # TODO: enable new items
         # self.setEditable(True)
-        
+
     def set_name(self, name):
         self.name = name
-        
+
     def set_items(self, items: list[str]):
         """ set the items of the combobox."""
         self.items = items
@@ -144,17 +146,19 @@ class ConfigComboBox(QComboBox):
         self.collect()
         return val
 
+
 class ConfigPlainTextEdit(QPlainTextEdit):
     """
-    A subclass of :py:class:`QPlainTextEdit`. Can be setup with a link to `QSettings` instance
-    to maintain state between program restarts.
+    A subclass of :py:class:`QPlainTextEdit`. Can be setup with a link to
+    a :py:class:`QSettings` instance to maintain state between program restarts.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = None
         self.default = None
 
-    def setup(self, config: QSettings, name: str, default: str = "", autocollect: bool=False):
+    def setup(self, config: QSettings, name: str,
+              default: str = "", autocollect: bool = False):
         """
         Setup the link to a :py:class:`QSettings` instance for this plaintextedit.
 
@@ -200,5 +204,3 @@ class ConfigPlainTextEdit(QPlainTextEdit):
 
     def set_default(self, default: str):
         self.default = default
-
-

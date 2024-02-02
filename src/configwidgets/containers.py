@@ -31,7 +31,8 @@ class ConfigGroupBox(QGroupBox):
         self.default = False
         self.toggle_vis = False
 
-    def setup(self, config: QSettings, name: str, default: bool = False, toggle_visibility: bool = False):
+    def setup(self, config: QSettings, name: str, default: bool = False,
+              toggle_visibility: bool = False):
         """
         Setup the link to a :py:class:`QSettings` instance for this groupbox.
 
@@ -63,7 +64,7 @@ class ConfigGroupBox(QGroupBox):
     def set_default(self, default: bool):
         """ set the default value for retrieving the value. """
         self.default = default
-        
+
     def set_toggle_visibility(self, toggle: bool):
         self.toggle_vis = toggle
 
@@ -96,7 +97,7 @@ class ConfigGroupBox(QGroupBox):
             self.config.setValue(self.name, val)
         self.activate(val)
         return val
-    
+
     def activate(self, val: bool):
         """ if setup, change the visibility of the content of this widget."""
         if not self.toggle_vis:
@@ -105,4 +106,3 @@ class ConfigGroupBox(QGroupBox):
             if not c.isWidgetType():
                 continue
             c.setVisible(val)
-        

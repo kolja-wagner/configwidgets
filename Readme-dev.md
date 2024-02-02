@@ -18,6 +18,6 @@ twine upload -r pypi dist/*
 ```
 
 - auto sphinx:
-```
+```tw
 sphinx-autobuild docs/source docs/build/html
 ```

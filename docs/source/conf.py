@@ -11,6 +11,7 @@ copyright = '2024, Kolja Wagner'
 author = 'Kolja Wagner'
 
 import configwidgets
+
 release = configwidgets.__version__
 
 # -- General configuration ---------------------------------------------------

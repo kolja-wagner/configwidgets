@@ -5,7 +5,7 @@ Definition of text based Widgets.
 @author: kolja
 """
 from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QLineEdit, QComboBox, QPlainTextEdit
+from PyQt5.QtWidgets import QComboBox, QLineEdit, QPlainTextEdit
 
 
 class ConfigLineEdit(QLineEdit):

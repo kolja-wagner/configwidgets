@@ -32,3 +32,9 @@ version = {attr = "configwidgets.__version__"}
 [tool.flake8]
 ignore = ["F401", "E123"]
 max-line-length = 90
+
+[tool.pytest.ini_options]
+addopts = "--cov=configwidgets"
+testpaths = [
+    "tests",
+]

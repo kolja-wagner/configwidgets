@@ -4,14 +4,16 @@ Created on Fri Feb  2 08:40:48 2024
 
 @author: kolja
 """
+import logging
 from pathlib import Path
-import logging 
+
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s', level=logging.INFO)
 from enum import Enum
 
 from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QWidget, QRadioButton, QLineEdit, QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QLineEdit, QRadioButton, QWidget
 from PyQt5.uic import loadUi
+
 
 class FileTypeFilter(Enum):
     empty = 0

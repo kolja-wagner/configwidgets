@@ -7,6 +7,7 @@ Definition of container widgets.
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QGroupBox
 
+
 class ConfigGroupBox(QGroupBox):
     """
     A subclass of :py:class:`QGroupBox`. Can be setup with a link to `QSettings` instance

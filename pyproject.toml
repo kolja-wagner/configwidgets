@@ -23,6 +23,9 @@ Repository = "https://github.com/kolja-wagner/configwidgets"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"configwidgets.static" = ["*.ui"]
+
 [tool.setuptools.dynamic]
 version = {attr = "configwidgets.__version__"}
 

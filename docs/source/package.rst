@@ -48,4 +48,5 @@ content
    package_numbers
    package_datetime
    package_containers
+   package_path
 

@@ -20,6 +20,7 @@ didnt match the project structure, therefore a new package was created.
 
    setup
    package
+   change
 
 Indices and tables
 ==================

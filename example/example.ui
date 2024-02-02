@@ -131,11 +131,10 @@
     </layout>
    </item>
    <item>
-    <widget class="QRadioButton" name="radioButton_3">
-     <property name="text">
-      <string>RadioButton</string>
-     </property>
-    </widget>
+    <widget class="ConfigPathWidget" name="widget_path" native="true"/>
+   </item>
+   <item>
+    <widget class="ConfigPathWidget" name="widget_file" native="true"/>
    </item>
    <item>
     <spacer name="verticalSpacer">
@@ -229,6 +228,12 @@
    <class>ConfigRadioButton</class>
    <extends>QRadioButton</extends>
    <header>configwidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ConfigPathWidget</class>
+   <extends>QWidget</extends>
+   <header>configwidgets.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

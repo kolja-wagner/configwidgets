@@ -8,3 +8,4 @@ from .text import ConfigLineEdit, ConfigComboBox, ConfigPlainTextEdit
 from .numbers import ConfigDoubleSpinBox, ConfigSpinBox
 
 from .containers import ConfigGroupBox
+from .path import ConfigPathWidget

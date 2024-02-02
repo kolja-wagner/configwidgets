@@ -18,7 +18,7 @@ class ConfigLineEdit(QLineEdit):
         self.name = None
         self.default = None
 
-    def setup(self, config: QSettings, name: str, default: str = ""):
+    def setup(self, config: QSettings, name: str, default: str = "", autocollect: bool=True):
         """
         Setup the link to a :py:class:`QSettings` instance for this lineedit.
 
@@ -30,13 +30,16 @@ class ConfigLineEdit(QLineEdit):
             The QSettings key to store the synced value.
         default : bool, optional
             The default value. The default is False.
+        autocollect : bool, optional
+            If true, every change is collected.
         """
         self.config = config
         self.set_name(name)
         self.set_default(default)
 
         self.load_value()
-        self.editingFinished.connect(self.collect)
+        if autocollect:
+            self.editingFinished.connect(self.collect)
 
     def collect(self) -> str:
         """ save text in config."""
@@ -198,19 +201,4 @@ class ConfigPlainTextEdit(QPlainTextEdit):
     def set_default(self, default: str):
         self.default = default
 
-        
-if __name__ == "__main__":
-    import sys
-    from PyQt5.QtWidgets import QApplication
-    
-    keys = ["abc", "def", "ghi"]
-    
-    config = QSettings("k.wagner", "configsettings-example")
-
-    app = QApplication(sys.argv)
-    window = ConfigPlainTextEdit() 
-    window.setup(config, "plaintext", autosave=True)
-
-    window.show()
-    sys.exit(app.exec())
 

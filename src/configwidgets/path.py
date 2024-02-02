@@ -9,6 +9,7 @@ from pathlib import Path
 from enum import Enum
 
 from PyQt5.QtCore import QSettings
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFileDialog, QLineEdit, QRadioButton, QWidget
 from PyQt5.uic import loadUi
 
@@ -114,6 +115,11 @@ class ConfigPathWidget(QWidget):
         self.mode = mode
         self.set_filter(filetypfilter)
 
+    def set_icon(self, icon):
+        if isinstance(icon, str):
+            icon = QIcon(icon)
+        self.btn_select.setIcon(icon)
+
     def set_filter(self, filetypfilter: FileTypeFilter = FileTypeFilter.empty):
         """ Manualy set the filter of the widget."""
         if isinstance(filetypfilter, str) and filetypfilter in (f.name for f in FileTypeFilter):
@@ -123,7 +129,7 @@ class ConfigPathWidget(QWidget):
 
     def set_value(self, path: Path) -> Path | None:
         """ set a path to be stored. "None" is a valid parameter as well as return value."""
-        self.logger.info(f"set {path=}")
+        self.logger.debug(f"set {path=}")
         if path is None:
             return self.reset_value()
 
@@ -144,7 +150,7 @@ class ConfigPathWidget(QWidget):
 
     def reset_value(self) -> None:
         """ reset the stored path to 'None'."""
-        self.logger.info("path not set")
+        self.logger.debug("path not set")
         self.config.setValue(self.name, "")
         self.lineEdit.setText("<NONE>")
         return None
@@ -152,7 +158,7 @@ class ConfigPathWidget(QWidget):
     def load_value(self) -> Path | None:
         """ load the stored path. If no valid value is stored the widget resets."""
         val = self.config.value(self.name, type=str, defaultValue=self.default)
-        self.logger.info(f"load {val=}")
+        self.logger.info(f"load {self.name}={val}")
 
         if val == "":
             return self.reset_value()

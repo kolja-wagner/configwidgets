@@ -7,13 +7,19 @@ Testing the code in `configwidgets.buttons`
 from configwidgets import ConfigCheckBox, ConfigRadioButton
 from PyQt5.QtCore import QSettings
 
-def test_checkbox(qtbot):
-    config = QSettings("k.wagner", "configwidgets")
-    config.clear()
+def test_checkbox(qtbot, config):
     assert config.value("pytest/checkbox", type=bool) == False
 
     # setup doesnt change config
     widget = ConfigCheckBox()
+    val = widget.isChecked()
+    assert widget.load_value() is None
+    assert widget.isChecked() == val
+    assert widget.set_value(not val) is None
+    assert widget.collect() is None
+    assert widget.isChecked() == val
+    
+    
     widget.setup(config, "pytest/checkbox", default=True)
     assert config.value("pytest/checkbox", type=bool) == False
 
@@ -29,29 +35,25 @@ def test_checkbox(qtbot):
     widget.toggle()
     assert config.value("pytest/checkbox", type=bool) == True
     
-def test_checkbox_no_config(qtbot):
-    # without a config all methods (load_value, set_value, collect) 
-    # should not change any thing
-    widget = ConfigCheckBox()
-    val = widget.isChecked()
-    assert widget.load_value() is None
-    assert widget.isChecked() == val
-
-    assert widget.set_value(not val) is None
-    assert widget.isChecked() == val
-
-    assert widget.collect() is None
 
 
-def test_radio(qtbot):
-    config = QSettings("k.wagner", "configwidgets")
-    config.clear()
+def test_radio(qtbot, config):
     config.setValue("pytest/radio1", True)
     config.setValue("pytest/radio2", False)
     
     # initialize doesnt change
     widget1 = ConfigRadioButton()
     widget2 = ConfigRadioButton()
+    v1, v2 = widget1.isChecked(), widget2.isChecked()
+    assert widget1.load_value() is None
+    assert widget1.isChecked() == v1
+    assert widget2.isChecked() == v2
+
+    assert widget1.set_value(not v1) is None
+    assert widget1.isChecked() == v1
+    assert widget2.isChecked() == v2
+
+    assert widget1.collect() is None
     assert not widget1.isChecked()
     assert not widget2.isChecked()
     
@@ -75,17 +77,5 @@ def test_radio(qtbot):
     assert widget1.isChecked()
 
     
-def test_radio_no_config(qtbot):
-    # without a config all methods (load_value, set_value, collect) 
-    # should not change any thing
-    widget = ConfigRadioButton()
-    val = widget.isChecked()
-    assert widget.load_value() is None
-    assert widget.isChecked() == val
-
-    assert widget.set_value(not val) is None
-    assert widget.isChecked() == val
-
-    assert widget.collect() is None
     
     

@@ -7,11 +7,13 @@ Definition of number subclasses.
 from PyQt5.QtCore import QSettings, Qt
 from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox
 
+from .error import ConfigNotSetupError
 
 class ConfigSpinBox(QSpinBox):
 
     def __init__(self, parent=None):
         super().__init__()
+        self.config = None
         self.name = None
         self.unit = None
 
@@ -26,16 +28,22 @@ class ConfigSpinBox(QSpinBox):
         self.editingFinished.connect(self.collect)
 
     def load_value(self) -> int:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=int, defaultValue=self.default)
         self.setValue(val)
         return val
 
     def set_value(self, val: int) -> int:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setValue(val)
         self.config.setValue(self.name, val)
         return val
 
     def collect(self) -> int:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.value()
         self.config.setValue(self.name, val)
         return val
@@ -51,10 +59,14 @@ class ConfigSpinBox(QSpinBox):
         self.setSuffix(f" {self.unit}")
 
 
+
+            
+        
 class ConfigDoubleSpinBox(QDoubleSpinBox):
 
     def __init__(self, parent=None):
         super().__init__()
+        self.config = None
         self.name = None
         self.unit = None
 
@@ -69,16 +81,22 @@ class ConfigDoubleSpinBox(QDoubleSpinBox):
         self.editingFinished.connect(self.collect)
 
     def load_value(self) -> float:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=float, defaultValue=self.default)
         self.setValue(val)
         return val
 
     def set_value(self, val: float) -> float:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setValue(val)
         self.config.setValue(self.name, val)
         return val
 
     def collect(self) -> float:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.value()
         self.config.setValue(self.name, val)
         return val

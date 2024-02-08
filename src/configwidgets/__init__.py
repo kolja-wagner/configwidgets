@@ -8,3 +8,5 @@ from .datetime import ConfigDateEdit, ConfigDateTimeEdit, ConfigTimeEdit
 from .numbers import ConfigDoubleSpinBox, ConfigSpinBox
 from .path import ConfigPathWidget
 from .text import ConfigComboBox, ConfigLineEdit, ConfigPlainTextEdit
+
+from .error import ConfigNotSetupError

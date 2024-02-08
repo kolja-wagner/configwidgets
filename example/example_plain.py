@@ -5,12 +5,13 @@ Created on Wed Jan 31 16:39:49 2024
 @author: kolja
 """
 import sys
-from pprint import pprint
+from pprint import  pformat
 
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QApplication, QHBoxLayout, QPushButton, QWidget
 from PyQt5.uic import loadUi
 
+import logging
 
 class ExampleWindow(QWidget):
     EXIT_CODE_REBOOT = -42
@@ -18,7 +19,7 @@ class ExampleWindow(QWidget):
     def __init__(self):
         super().__init__()
         loadUi(__file__ + "/../example_plain.ui", self)
-        self.config = QSettings("k.wagner", "configsettings-example")
+        self.config = QSettings("k.wagner", "configwidgets-example")
         self.setup_widget()
 
     def setup_widget(self):
@@ -32,13 +33,13 @@ class ExampleWindow(QWidget):
         self.btn_restart.clicked.connect(self.restart)
 
     def show_settings(self):
-        print(f"show all in {self.config.fileName()}")
+        logging.info(f"show all in {self.config.fileName()}")
         keys = self.config.allKeys()
         settings = {k: self.config.value(k) for k in keys}
-        pprint(settings)
+        logging.info(pformat(settings))
 
     def reset_settings(self):
-        print(f"reset {self.config.fileName()}")
+        logging.info(f"reset {self.config.fileName()}")
         self.config.clear()
 
     def restart(self):

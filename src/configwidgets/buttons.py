@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QCheckBox, QRadioButton
 
 from .error import ConfigNotSetupError
 
+
 class ConfigCheckBox(QCheckBox):
     """
     A subclass of :py:class:`QCheckBox`. Can be setup with a link to `QSettings` instance
@@ -64,7 +65,7 @@ class ConfigCheckBox(QCheckBox):
     def load_value(self) -> bool:
         """ load the state from the QSettings instance to the widget state.
         If the key is not defined, the :attr:`default` is used instead.
-        
+
         Raises
         ------
         ConfigNotSetupError
@@ -78,7 +79,7 @@ class ConfigCheckBox(QCheckBox):
 
     def set_value(self, val: bool) -> bool:
         """ set a value to the widget state and the QSettings Instance.
-        
+
         Raises
         ------
         ConfigNotSetupError
@@ -94,7 +95,7 @@ class ConfigCheckBox(QCheckBox):
         """
         collect the widget state and store in QSettings Instance.
         Gets connected to the :func:`toggled` signal.
-        
+
         Raises
         ------
         ConfigNotSetupError

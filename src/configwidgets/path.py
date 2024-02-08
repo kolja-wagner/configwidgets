@@ -5,8 +5,8 @@ Created on Fri Feb  2 08:40:48 2024
 @author: kolja
 """
 import logging
-from pathlib import Path
 from enum import Enum
+from pathlib import Path
 
 from PyQt5.QtCore import QSettings
 from PyQt5.QtGui import QIcon

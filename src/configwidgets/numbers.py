@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox
 
 from .error import ConfigNotSetupError
 
+
 class ConfigSpinBox(QSpinBox):
 
     def __init__(self, parent=None):
@@ -59,9 +60,6 @@ class ConfigSpinBox(QSpinBox):
         self.setSuffix(f" {self.unit}")
 
 
-
-            
-        
 class ConfigDoubleSpinBox(QDoubleSpinBox):
 
     def __init__(self, parent=None):

@@ -5,9 +5,11 @@ Created on Thu Feb  8 22:47:01 2024
 @author: kolja
 """
 
+import logging
+
 import pytest
 from PyQt5.QtCore import QSettings
-import logging
+
 
 @pytest.fixture
 def config():

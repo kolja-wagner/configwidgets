@@ -7,6 +7,8 @@ Definition of text based Widgets.
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QPlainTextEdit
 
+from .error import ConfigNotSetupError
+
 
 class ConfigLineEdit(QLineEdit):
     """
@@ -15,6 +17,7 @@ class ConfigLineEdit(QLineEdit):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.config = None
         self.name = None
         self.default = None
 
@@ -44,18 +47,24 @@ class ConfigLineEdit(QLineEdit):
 
     def collect(self) -> str:
         """ save text in config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.text()
         self.config.setValue(self.name, val)
         return val
 
     def load_value(self) -> str:
         """ load text from config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=str, defaultValue=self.default)
         self.setText(val)
         return val
 
     def set_value(self, val: str) -> str:
         """ to widget and config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setText(val)
         self.collect()
         return val
@@ -83,6 +92,7 @@ class ConfigComboBox(QComboBox):
             The parent widget of the radiobutton. The default is None.
         """
         super().__init__(parent=parent)
+        self.config = None
         self.name = None
         self.default = None
 
@@ -129,6 +139,8 @@ class ConfigComboBox(QComboBox):
 
     def collect(self) -> str:
         """ save text in config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.currentText()
         self.config.setValue(self.name, val)
         # TODO: save new values to QSettings
@@ -136,13 +148,17 @@ class ConfigComboBox(QComboBox):
 
     def load_value(self) -> str:
         """ load text from config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=str, defaultValue=self.default)
         self.setCurrentText(val)
         return val
 
     def set_value(self, val: str) -> str:
         """ to widget and config."""
-        self.setText(val)
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
+        self.setCurrentText(val)
         self.collect()
         return val
 
@@ -154,6 +170,7 @@ class ConfigPlainTextEdit(QPlainTextEdit):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.config = None
         self.name = None
         self.default = None
 
@@ -183,18 +200,24 @@ class ConfigPlainTextEdit(QPlainTextEdit):
 
     def collect(self) -> str:
         """ save text in config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.toPlainText()
         self.config.setValue(self.name, val)
         return val
 
     def load_value(self) -> str:
         """ load text from config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=str, defaultValue=self.default)
         self.setPlainText(val)
         return val
 
     def set_value(self, val: str) -> str:
         """ to widget and config."""
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setPlainText(val)
         self.collect()
         return val

@@ -4,9 +4,12 @@ Testing the code in `configwidgets.buttons`
 
 @author: kolja
 """
-from configwidgets import ConfigCheckBox, ConfigRadioButton, ConfigNotSetupError
-from PyQt5.QtCore import QSettings
 import pytest
+from PyQt5.QtCore import QSettings
+
+from configwidgets import (ConfigCheckBox, ConfigNotSetupError,
+                           ConfigRadioButton)
+
 
 def test_checkbox(qtbot, config):
     assert config.value("pytest/checkbox", type=bool) == False

@@ -5,11 +5,11 @@ Testing the code in `configwidgets.numbers`
 @author: kolja
 """
 
+import pytest
 from PyQt5.QtCore import QSettings
-import pytest 
 
-from configwidgets import ConfigSpinBox, ConfigDoubleSpinBox, ConfigNotSetupError
-
+from configwidgets import (ConfigDoubleSpinBox, ConfigNotSetupError,
+                           ConfigSpinBox)
 
 
 def test_spinbox(qtbot, config):

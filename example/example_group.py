@@ -4,9 +4,9 @@ Created on Wed Jan 31 16:39:49 2024
 
 @author: kolja
 """
+import logging
 import sys
 from pprint import pformat
-import logging
 
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QApplication, QHBoxLayout, QPushButton, QWidget

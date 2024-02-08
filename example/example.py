@@ -4,9 +4,9 @@ Create a simple widget to show the functionality of the configswidget package.
 
 @author: kolja
 """
+import logging
 import sys
 from pprint import pformat
-import logging
 
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QApplication, QHBoxLayout, QWidget

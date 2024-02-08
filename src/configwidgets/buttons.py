@@ -7,6 +7,7 @@ Definition of action based widgets.
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QCheckBox, QRadioButton
 
+from .error import ConfigNotSetupError
 
 class ConfigCheckBox(QCheckBox):
     """
@@ -63,29 +64,46 @@ class ConfigCheckBox(QCheckBox):
     def load_value(self) -> bool:
         """ load the state from the QSettings instance to the widget state.
         If the key is not defined, the :attr:`default` is used instead.
+        
+        Raises
+        ------
+        ConfigNotSetupError
+            Raises an Error if the setup function wasnt called.
         """
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=bool, defaultValue=self.default)
         self.setChecked(val)
         return val
 
     def set_value(self, val: bool) -> bool:
-        """ set a value to the widget state and the QSettings Instance."""
-        if self.config is None:
-            return
+        """ set a value to the widget state and the QSettings Instance.
+        
+        Raises
+        ------
+        ConfigNotSetupError
+            Raises an Error if the setup function wasnt called.
+        """
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setChecked(val)
         self.collect()
         return val
 
     def collect(self) -> bool:
-        """ collect the widget state and store in QSettings Instance.
-        Gets connected to the :func:`toggled` signal."""
-        if self.config is None:
-            return
+        """
+        collect the widget state and store in QSettings Instance.
+        Gets connected to the :func:`toggled` signal.
+        
+        Raises
+        ------
+        ConfigNotSetupError
+            Raises an Error if the setup function wasnt called.
+        """
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.isChecked()
-        if self.name is not None:
-            self.config.setValue(self.name, val)
+        self.config.setValue(self.name, val)
         return val
 
 
@@ -145,16 +163,16 @@ class ConfigRadioButton(QRadioButton):
         """ load the state from the QSettings instance to the widget state.
         If the key is not defined, the :attr:`default` is used instead.
         """
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=bool, defaultValue=self.default)
         self.setChecked(val)
         return val
 
     def set_value(self, val: bool) -> bool:
         """ set a value to the widget state and the QSettings Instance."""
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setChecked(val)
         self.collect()
         return val
@@ -162,9 +180,8 @@ class ConfigRadioButton(QRadioButton):
     def collect(self) -> bool:
         """ collect the widget state and store in QSettings Instance.
         Gets connected to the :func:`toggled` signal."""
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.isChecked()
-        if self.name is not None:
-            self.config.setValue(self.name, val)
+        self.config.setValue(self.name, val)
         return val

@@ -4,8 +4,9 @@ Testing the code in `configwidgets.buttons`
 
 @author: kolja
 """
-from configwidgets import ConfigCheckBox, ConfigRadioButton
+from configwidgets import ConfigCheckBox, ConfigRadioButton, ConfigNotSetupError
 from PyQt5.QtCore import QSettings
+import pytest
 
 def test_checkbox(qtbot, config):
     assert config.value("pytest/checkbox", type=bool) == False
@@ -13,10 +14,12 @@ def test_checkbox(qtbot, config):
     # setup doesnt change config
     widget = ConfigCheckBox()
     val = widget.isChecked()
-    assert widget.load_value() is None
-    assert widget.isChecked() == val
-    assert widget.set_value(not val) is None
-    assert widget.collect() is None
+    with pytest.raises(ConfigNotSetupError):
+        widget.load_value()
+    with pytest.raises(ConfigNotSetupError):
+        widget.set_value(not val)
+    with pytest.raises(ConfigNotSetupError):
+        widget.collect()
     assert widget.isChecked() == val
     
     
@@ -45,15 +48,19 @@ def test_radio(qtbot, config):
     widget1 = ConfigRadioButton()
     widget2 = ConfigRadioButton()
     v1, v2 = widget1.isChecked(), widget2.isChecked()
-    assert widget1.load_value() is None
+    
+    with pytest.raises(ConfigNotSetupError):
+        widget1.load_value()
     assert widget1.isChecked() == v1
     assert widget2.isChecked() == v2
 
-    assert widget1.set_value(not v1) is None
+    with pytest.raises(ConfigNotSetupError):
+        widget1.set_value(not v1)
     assert widget1.isChecked() == v1
     assert widget2.isChecked() == v2
 
-    assert widget1.collect() is None
+    with pytest.raises(ConfigNotSetupError):
+        widget1.collect()
     assert not widget1.isChecked()
     assert not widget2.isChecked()
     

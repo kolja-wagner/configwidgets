@@ -94,7 +94,10 @@ class ConfigGroupBox(QGroupBox):
         Gets connected to the :func:`toggled` signal."""
         if (self.config is None) | (self.name is None):
             raise ConfigNotSetupError(self)
-        val = self.isChecked()
+        if self.isCheckable():
+            val = self.isChecked()
+        else:
+            val = self.isVisible()
         self.config.setValue(self.name, val)
         self.activate(val)
         return val

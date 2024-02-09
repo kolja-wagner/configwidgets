@@ -7,6 +7,8 @@ Definition of container widgets.
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QGroupBox
 
+from .error import ConfigNotSetupError
+
 
 class ConfigGroupBox(QGroupBox):
     """
@@ -72,8 +74,8 @@ class ConfigGroupBox(QGroupBox):
         """ load the state from the QSettings instance to the widget state.
         If the key is not defined, the :attr:`default` is used instead.
         """
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.config.value(self.name, type=bool, defaultValue=self.default)
         self.setChecked(val)
         self.activate(val)
@@ -81,8 +83,8 @@ class ConfigGroupBox(QGroupBox):
 
     def set_value(self, val: bool) -> bool:
         """ set a value to the widget state and the QSettings Instance."""
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setChecked(val)
         self.collect()
         return val
@@ -90,11 +92,10 @@ class ConfigGroupBox(QGroupBox):
     def collect(self) -> bool:
         """ collect the widget state and store in QSettings Instance.
         Gets connected to the :func:`toggled` signal."""
-        if self.config is None:
-            return
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         val = self.isChecked()
-        if self.name is not None:
-            self.config.setValue(self.name, val)
+        self.config.setValue(self.name, val)
         self.activate(val)
         return val
 
@@ -102,7 +103,7 @@ class ConfigGroupBox(QGroupBox):
         """ if setup, change the visibility of the content of this widget."""
         if not self.toggle_vis:
             return
-        for c in self.children():
+        for c in self.children():  # pragma: no cover
             if not c.isWidgetType():
                 continue
             c.setVisible(val)

@@ -11,11 +11,14 @@ from datetime import time as pytime
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QDateEdit, QDateTimeEdit, QTimeEdit
 
+from .error import ConfigNotSetupError
 
 class ConfigDateTimeEdit(QDateTimeEdit):
 
     def __init__(self, parent=None):
         super().__init__(parent=parent)
+        self.config = None
+        self.default = None
         self.name = None
 
     def setup(self, config: QSettings, name: str, default: datetime = None):
@@ -35,17 +38,22 @@ class ConfigDateTimeEdit(QDateTimeEdit):
         self.default = default
 
     def collect(self) -> datetime:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         dt = self.dateTime().toPyDateTime()
-        if self.name is not None:
-            self.config.setValue(self.name, dt)
+        self.config.setValue(self.name, dt)
         return dt
 
     def load_value(self) -> datetime:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         dt = self.config.value(self.name, defaultValue=self.default, type=datetime)
         self.setDateTime(dt)
         return dt
 
     def set_value(self, dt: datetime) -> datetime:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setDateTime(dt)
         self.collect()
         return dt
@@ -55,6 +63,8 @@ class ConfigDateEdit(QDateEdit):
 
     def __init__(self, parent=None):
         super().__init__(parent=parent)
+        self.config = None
+        self.default = None
         self.name = None
 
     def setup(self, config: QSettings, name: str, default: pydate = None):
@@ -74,17 +84,22 @@ class ConfigDateEdit(QDateEdit):
         self.default = default
 
     def collect(self) -> pydate:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         d = self.date().toPyDate()
-        if self.name is not None:
-            self.config.setValue(self.name, d)
+        self.config.setValue(self.name, d)
         return d
 
     def load_value(self) -> pydate:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         d = self.config.value(self.name, defaultValue=self.default, type=pydate)
         self.setDate(d)
         return d
 
     def set_value(self, date: pydate) -> pydate:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setDate(date)
         self.collect()
         return date
@@ -93,6 +108,8 @@ class ConfigDateEdit(QDateEdit):
 class ConfigTimeEdit(QTimeEdit):
     def __init__(self, parent=None):
         super().__init__(parent=parent)
+        self.config = None
+        self.default = None
         self.name = None
 
     def setup(self, config: QSettings, name: str, default: pytime = None):
@@ -112,17 +129,22 @@ class ConfigTimeEdit(QTimeEdit):
         self.default = default
 
     def collect(self) -> pytime:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         t = self.time().toPyTime()
-        if self.name is not None:
-            self.config.setValue(self.name, t)
+        self.config.setValue(self.name, t)
         return t
 
     def load_value(self) -> pytime:
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         t = self.config.value(self.name, defaultValue=self.default, type=pydate)
         self.setTime(t)
         return t
 
     def set_value(self, time: pytime):
+        if (self.config is None) | (self.name is None):
+            raise ConfigNotSetupError(self)
         self.setTime(time)
         self.collect()
         return time

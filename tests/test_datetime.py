@@ -4,9 +4,13 @@ Testing configwidgets.datetime
 
 @author: kolja
 """
+from datetime import date, datetime, time, timedelta
+
 import pytest
-from configwidgets import ConfigDateTimeEdit, ConfigDateEdit, ConfigTimeEdit, ConfigNotSetupError
-from datetime import datetime, timedelta, date, time
+
+from configwidgets import (ConfigDateEdit, ConfigDateTimeEdit,
+                           ConfigNotSetupError, ConfigTimeEdit)
+
 
 def test_datetime(qtbot, config):
     # assert config.value("pytest/datetime", type=datetime)==None

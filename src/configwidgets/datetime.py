@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import QDateEdit, QDateTimeEdit, QTimeEdit
 
 from .error import ConfigNotSetupError
 
+
 class ConfigDateTimeEdit(QDateTimeEdit):
 
     def __init__(self, parent=None):

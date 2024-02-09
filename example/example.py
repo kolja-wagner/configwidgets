@@ -38,13 +38,11 @@ class ExampleWindow(QWidget):
         self.dateEdit.setup(self.config, "dateEdit")
         self.timeEdit.setup(self.config, "timeEdit")
         self.dateTimeEdit.setup(self.config, "dateTimeEdit")
-        # self.widget_path.set_mode("directory")
 
         self.widget_path.setup(self.config, "pathWidget_path", label="directory", mode="directory")
-        self.widget_file.setup(self.config, "pathWidget_file", label="txt file", mode="file")
-        self.widget_file.set_filter("txt")
-        # self.widget_file.setup(self.config, "pathWidget_file", label="file")
-        # self.widget_file.set_mode("file")
+        self.widget_file.setup(self.config, "pathWidget_file", label="txt file", 
+                               mode="file", filetyp="txt")
+        
 
     def setup_actions(self):
         self.btn_show.clicked.connect(self.show_settings)

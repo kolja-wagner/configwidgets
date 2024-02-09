@@ -13,7 +13,7 @@ from PyQt5.QtCore import QSettings
 
 @pytest.fixture
 def config():
-    config = QSettings("k.wagner", "configwidgets/test")
+    config = QSettings("k.wagner", "configwidgets")
     config.clear()
     yield config
     config.clear()

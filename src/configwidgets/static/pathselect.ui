@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
+    <width>369</width>
     <height>22</height>
    </rect>
   </property>
@@ -18,26 +18,53 @@
     <number>1</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="rightMargin">
     <number>1</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>1</number>
    </property>
    <item>
     <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>label</string>
+      <string>TextLabel</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="ConfigLineEdit" name="lineEdit"/>
+    <widget class="QComboBox" name="combo">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>&lt;NOT SET&gt;</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item>
     <widget class="QToolButton" name="btn_select">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>...</string>
      </property>
@@ -45,13 +72,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>ConfigLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>configwidgets.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -38,4 +38,5 @@ addopts = "--cov=configwidgets"
 testpaths = [
     "tests",
 ]
+log_cli_level = "info"
 qt_api = "pyqt5"

@@ -9,6 +9,9 @@ from PyQt5.QtWidgets import QComboBox, QLineEdit, QPlainTextEdit
 
 from .error import ConfigNotSetupError
 
+# TODO: store items in QSettings
+# TODO: enable editable QComboBox
+
 
 class ConfigLineEdit(QLineEdit):
     """
@@ -118,7 +121,6 @@ class ConfigComboBox(QComboBox):
         self.set_default(default)
         self.load_value()
         self.textActivated.connect(self.collect)
-        # # TODO: enable new items
         # self.setEditable(True)
 
     def set_name(self, name):
@@ -130,7 +132,6 @@ class ConfigComboBox(QComboBox):
         self.clear()
         for key in self.items:
             self.addItem(str(key))
-        # TODO: add to QSettings
 
     def set_default(self, default: str):
         if default is None:
@@ -143,7 +144,6 @@ class ConfigComboBox(QComboBox):
             raise ConfigNotSetupError(self)
         val = self.currentText()
         self.config.setValue(self.name, val)
-        # TODO: save new values to QSettings
         return val
 
     def load_value(self) -> str:

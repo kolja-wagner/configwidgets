@@ -146,7 +146,7 @@ class ConfigPathWidget(QWidget):
     def validate_text(self, text) -> Path | None:
         """ check if text is a valid path. If valid the value gets stored, else
         only the display shows the string. Changes the style accordingly."""
-        if text == "<NOT SET>" or text == "":
+        if text == "<NOT SET>" or text == "" or text is None:
             return self.set_empty()
         path = Path(text).resolve()
         idx = self.combo.findText(text)
@@ -208,7 +208,7 @@ class ConfigPathWidget(QWidget):
         """ open a :py:class:`QFileDialog` to select a path."""
         if (self.config is None) | (self.name is None):
             raise ConfigNotSetupError(self)
-        path = Path.home() if (path := self.load_value()) is None else path
+        path = Path.home() if (path := self.load_value()) is None or not path.exists() else path
         options = dict(directory=str(path))
         if self.mode == "directory":
             options["caption"] = "select directory"

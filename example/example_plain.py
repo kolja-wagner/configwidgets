@@ -8,9 +8,9 @@ import logging
 import sys
 from pprint import pformat
 
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QApplication, QHBoxLayout, QPushButton, QWidget
-from PyQt5.uic import loadUi
+from qtpy.QtCore import QSettings
+from qtpy.QtWidgets import QApplication, QHBoxLayout, QPushButton, QWidget
+from qtpy.uic import loadUi
 
 
 class ExampleWindow(QWidget):

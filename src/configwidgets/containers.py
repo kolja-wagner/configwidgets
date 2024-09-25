@@ -4,8 +4,8 @@ Definition of container widgets.
 
 @author: kolja
 """
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QGroupBox
+from qtpy.QtCore import QSettings
+from qtpy.QtWidgets import QGroupBox
 
 from .error import ConfigNotSetupError
 

@@ -8,8 +8,8 @@ from datetime import date as pydate
 from datetime import datetime
 from datetime import time as pytime
 
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QDateEdit, QDateTimeEdit, QTimeEdit
+from qtpy.QtCore import QSettings
+from qtpy.QtWidgets import QDateEdit, QDateTimeEdit, QTimeEdit
 
 from .error import ConfigNotSetupError
 

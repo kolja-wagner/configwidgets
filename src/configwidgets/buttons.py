@@ -4,8 +4,8 @@ Definition of action based widgets.
 
 @author: kolja
 """
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QCheckBox, QRadioButton
+from qtpy.QtCore import QSettings
+from qtpy.QtWidgets import QCheckBox, QRadioButton
 
 from .error import ConfigNotSetupError
 

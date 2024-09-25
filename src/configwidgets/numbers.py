@@ -4,8 +4,8 @@ Definition of number subclasses.
 
 @author: kolja
 """
-from PyQt5.QtCore import QSettings, Qt
-from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox
+from qtpy.QtCore import QSettings, Qt
+from qtpy.QtWidgets import QDoubleSpinBox, QSpinBox
 
 from .error import ConfigNotSetupError
 

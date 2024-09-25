@@ -8,10 +8,10 @@ import logging
 from enum import Enum
 from pathlib import Path
 
-from PyQt5.QtCore import QSettings
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QFileDialog, QLineEdit, QRadioButton, QWidget
-from PyQt5.uic import loadUi
+from qtpy.QtCore import QSettings
+from qtpy.QtGui import QIcon
+from qtpy.QtWidgets import QFileDialog, QLineEdit, QRadioButton, QWidget
+from qtpy.uic import loadUi
 
 from .error import ConfigNotSetupError
 

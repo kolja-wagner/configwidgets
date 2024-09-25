@@ -12,8 +12,18 @@ readme = "Readme.md"
 dynamic = ["version"]
 requires-python = ">=3.7"
 dependencies = [
-    "PyQt5>=5.15"
+    "qtpy>2",
 ]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "pytest-qt"]
+doc = [
+    "sphinx>5.3", 
+    "sphinx-qt-documentation",
+    "pydata-sphinx-theme>0.14",
+    "sphinx-copybutton"
+    ]
+
 
 [project.urls]
 Documentation = "https://configwidgets.readthedocs.io/en/latest/"

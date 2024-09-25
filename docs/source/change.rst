@@ -7,6 +7,7 @@ v1.4.*
 * Adding full tests for all widgets.
 * Adding ConfigNotSetupError. This error is raised allways, when load_value/set_value/collect is called with out setup.
 * Full rewrite for ConfigPathWidget. Now based on QComboBox and with a history of the current session, also colored validation.
+* Change dependency from :code:`PyQt5` to :code:`qtpy`. Update :code:`pyproject.toml` with dependencies.
 
 
 v1.3.*

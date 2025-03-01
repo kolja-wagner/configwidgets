@@ -19,11 +19,12 @@ develop
    
 * Install dependencies ::
 
-   pip install -r requirements.txt
+   pip install -e .[dev]
+
    
 * Install doc dependencies ::
 
-   pip install -r docs/requirements.txt
+   pip install -e .[doc]
 
 
 
